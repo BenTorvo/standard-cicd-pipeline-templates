@@ -3,10 +3,8 @@
 
 ## Stages
 
- - Package  
- - Configure  
- - Deploy  
- - Release
+ - Package - Install dependencies and run unit tests
+ - Deploy - Deploy to infrastructure and run integration tests
 
 ## Directories
 
