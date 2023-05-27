@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+
+package() {
+    echo "Packaging Application"
+    mkdir -p ./dist/
+    rm -rf ./dist/*
+    cp -rf ./src/* ./dist/
+    # FIXME: Add Package Commands
+}
+
+deploy() {
+    local environment="$1"
+    local build_id="$(git rev-parse --short HEAD)"
+    echo "Deploying Application: $environment $build_id"
+
+    echo "Setting Variables"
+    # FIXME: Add Shared Variables
+    if [ environment = "dev" ]; then
+        # FIXME: Add Environment Specific Variables
+    elif [ environment = "stg" ]; then
+        # FIXME: Add Environment Specific Variables
+    elif [ environment = "prd" ]; then
+        # FIXME: Add Environment Specific Variables
+    else
+        echo "Unknown Environment"
+        exit 1
+    fi
+
+    echo "Deploying Application"
+    # FIXME: Add Deployment Commands
+}
+
+echo "Executing: ${@}"
+eval ${@}
