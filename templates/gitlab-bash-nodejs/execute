@@ -17,15 +17,16 @@ deploy() {
 
     echo "Setting Variables"
     # FIXME: Add Shared Variables
-    if [ environment = "dev" ]; then
-        # FIXME: Add Environment Specific Variables
-    elif [ environment = "stg" ]; then
-        # FIXME: Add Environment Specific Variables
-    elif [ environment = "prd" ]; then
-        # FIXME: Add Environment Specific Variables
+    if [[ "$environment" == "" ]]; then
+        echo "Environment is not set" && exit 1
+    elif [[ "$environment" == "dev" ]]; then
+        echo "FIXME: Add Environment Specific Variables"
+    elif [[ "$environment" == "stg" ]]; then
+        echo "FIXME: Add Environment Specific Variables"
+    elif [[ "$environment" == "prd" ]]; then
+        echo "FIXME: Add Environment Specific Variables"
     else
-        echo "Unknown Environment"
-        exit 1
+        echo "Unknown Environment" && exit 1
     fi
 
     echo "Deploying Application"

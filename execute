@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -e
+
+package() {
+    mkdir -p ./templates/
+    rm -rf ./templates/*
+    ls -aA ./components/cicd/ | while read cicd; do
+        ls -aA ./components/os/ | while read os; do
+            ls -aA ./components/language/ | while read language; do
+                template_name="$cicd-$os-$language"
+                echo "Generating $template_name"
+                mkdir -p ./templates/$template_name/
+                cp -rf ./components/cicd/$cicd/. ./templates/$template_name/
+                cp -rf ./components/os/$os/. ./templates/$template_name/
+                mkdir -p ./templates/$template_name/src/
+                cp -rf ./components/language/$language/. ./templates/$template_name/src/
+            done
+        done
+    done
+}
+
+echo "Executing: ${@}"
+eval ${@}

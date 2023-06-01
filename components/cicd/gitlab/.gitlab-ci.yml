@@ -1,31 +1,31 @@
 
-stages: all
+stages: [ all ]
 
 package:
   when: always
-  only: main
+  only: [ main ]
   stage: all
   needs: []
-  script: run package
+  script: ./execute package
 
 deploy-dev:
   when: always
-  only: main
+  only: [ main ]
   stage: all
   needs: [ package ]
-  script: run deploy dev
+  script: ./execute deploy dev
 
 deploy-stg:
   when: manual
-  only: main
+  only: [ main ]
   stage: all
   needs: [ deploy-dev ]
-  script: run deploy stg
+  script: ./execute deploy stg
 
 deploy-prd:
   when: manual
-  only: main
+  only: [ main ]
   stage: all
   needs: [ deploy-stg ]
-  script: run deploy prd
+  script: ./execute deploy prd
   
