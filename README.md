@@ -1,6 +1,8 @@
 
 # Standard CI/CD Pipelines
 
+This repo provides repository templates to speed up CI/CD pipeline setup.
+
 ## Usage
 
  1. Download a template from the template directory & unpack it to the root of your repository
