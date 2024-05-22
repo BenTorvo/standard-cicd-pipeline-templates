@@ -1,0 +1,28 @@
+
+pipeline {
+    agent none
+    stages {
+        stage('Package') {
+            agent any
+            when { branch 'main' }
+            steps { sh 'execute package' }
+        }
+        stage('Deploy Development') {
+            agent any
+            when { branch 'main' }
+            steps { sh 'execute deploy dev' }
+        }
+        stage('Deploy Staging') {
+            agent any
+            input { message 'Run' }
+            when { branch 'main' }
+            steps { sh 'execute deploy stg' }
+        }
+        stage('Deploy Production') {
+            agent any
+            input { message 'Run' }
+            when { branch 'main' }
+            steps { sh 'execute deploy prd' }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+
+stages: [ all ]
+
+package:
+  when: always
+  only: [ main ]
+  stage: all
+  needs: []
+  script: ./execute package
+
+deploy-dev:
+  when: always
+  only: [ main ]
+  stage: all
+  needs: [ package ]
+  script: ./execute deploy dev
+
+deploy-stg:
+  when: manual
+  only: [ main ]
+  stage: all
+  needs: [ deploy-dev ]
+  script: ./execute deploy stg
+
+deploy-prd:
+  when: manual
+  only: [ main ]
+  stage: all
+  needs: [ deploy-stg ]
+  script: ./execute deploy prd
+  
